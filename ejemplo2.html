@@ -38,31 +38,31 @@
           </h3>
           <h4>Bloques</h4>
           <pre>
-          a = [1, 2, 3, 4, 5]
-          a.each {|item| puts item.to_s }
+a = [1, 2, 3, 4, 5]
+a.each {|item| puts item.to_s }
 
-          b = [1, "2", "tres", 8/2, 5.to_s]
-          b.each {|item| puts item.to_s }
+b = [1, "2", "tres", 8/2, 5.to_s]
+b.each {|item| puts item.to_s }
           </pre>
-          <h4>Otra forma de hacer lo mismo</h4>
 
+          <h4>Otra forma para hacer lo mismo</h4>
           <pre>
-					a.each do |item|
-						puts item.to_s
-					end
+a.each do |item|
+	puts item.to_s
+end
           </pre>
 
           <h4>Esto esta dentro de Ruby. Si! leamos un archivo de texto.</h4>
           <pre>
-          # ejemplo02
-					# avanzamos con bloques
+# ejemplo02
+# avanzamos con bloques
 
-					file_name = 'texto_de_prueba.txt'
-					if File.exist?(file_name)
-					  puts File.read(file_name)
-					else
-					  puts 'caramba. no existe el archivo.'
-					end
+file_name = 'texto_de_prueba.txt'
+if File.exist?(file_name)
+  puts File.read(file_name)
+else
+  puts 'caramba. no existe el archivo.'
+end
 					</pre>
         </section>
 
