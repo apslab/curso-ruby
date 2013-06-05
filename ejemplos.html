@@ -24,7 +24,7 @@
 
         <header>
           <h1>Curso Ruby en el MUG</h1>
-          <h2>Historia y características del Lenguaje</h2>
+          <h2>IRB los primeros pasos, con mucha potencia.</h2>
         </header>
 
         <hr>
@@ -43,11 +43,27 @@
 					<h3>Objetos 'Todo es un objeto'</h3>
 
 					<p>10.class</p>
+					
 					<p>"Hola Mundo".class</p>
+					
 					<p>nil.class</p>
-					<p>... </p>
 
-					<h3>Funciona</h3>
+					<p>a = "a es una variable"</p>
+
+					<p>a.objectid</p>
+
+					<h4>El objeto contesta responde a todos estos metodos</h4>
+					<p>a.methods</p>
+
+					<h4>El objeto contesta responde a todos estos metodos. Los ordenamos.</h4>
+					<h5>Y podemos ordenarlo, porque el resultado del metodo 'methods' es un array</h5>
+					<p>a.methods.sort</p>
+
+					<h5>Entonces a.methods.methos nos retornara un array de los metodos que tiene un array!</h5>
+					<p>a.methods.methods</p>
+
+					<h3>Funciona!!!</h3>
+
 					<p>puts 'Hola gente interesada en el lenguaje Ruby!' </p>
 
 					<p>puts 10*5 </p>
@@ -60,16 +76,22 @@
 
 					<p>puts 'ruby es un lenguaje dinámico '.capitalize.swapcase</p>
 
-					<p></p>
+					<p>variable = 'dato para interpolar'</p>
+					<p>a = "comillas dobles permite interpolacion #{ variable }"</p>
+					<p>b = 'comillas simples no permiten interpolar #{ variable }'</p>
 
 					<p>puts 8.to_s*10</p>
-
 					<p>
 					texto = 'este es un texto de prueba, para realizar ejercicios'</p>
 
 					<p>texto.split.each do |word|</p>
 					  <p>	puts word.to_s</p>
 					<p>end</p>
+
+					<h3>Algo mas...</h3>
+
+
+
 				</section>
 
         <section id="downloads" class="clearfix">
