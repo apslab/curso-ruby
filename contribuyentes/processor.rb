@@ -17,9 +17,26 @@ class Contribuyente
   end
 end
 
+# TODO: Puedo no pasar la lista?
+#
+module Buscador
+
+  attr_accessor :lista
+
+  def buscar(a_buscar, valor)
+    lista.each do |key, values|
+      el_buscado = values.find { |c| c.send(a_buscar) == valor }
+      return el_buscado if el_buscado != nil
+    end
+    return nil
+  end
+end
+
 # La clase caja obtiene los contribuyentes de un archivo CSV
 # Y permite buscar por apellido
 class Caja 
+
+  include Buscador
 
   def initialize(file_path)
     @contribuyentes = {}
@@ -33,20 +50,11 @@ class Caja
         @contribuyentes[c.alicuota] = [c]
       end
     end
+    self.lista = @contribuyentes
   end
 
   def contador_de_contribuyentes
     @count
-  end
-
-  # a_buscar: el campo que estoy buscando (ejemplo: nombre, apellido)
-  # valor: el valor a buscar sobre el campo
-  def buscar(a_buscar, valor)
-    @contribuyentes.each do |key, values|
-      el_buscado = values.find { |c| c.send(a_buscar) == valor }
-      return el_buscado if el_buscado != nil
-    end
-    return nil
   end
 
 end
