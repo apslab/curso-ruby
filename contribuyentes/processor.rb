@@ -26,7 +26,7 @@ class Caja
     @count = 0
     CSV.foreach(file_path) do |row|
       @count += 1
-      c = Contribuyente.new(row[0], row[1], row[2])
+      c = Contribuyente.new(row[0].strip, row[1].strip, row[2].strip)
       if @contribuyentes.key?(c.alicuota)
         @contribuyentes[c.alicuota] << c 
       else
@@ -39,13 +39,16 @@ class Caja
     @count
   end
 
-  def buscar_por_nombre(nombre)
+  # a_buscar: el campo que estoy buscando (ejemplo: nombre, apellido)
+  # valor: el valor a buscar sobre el campo
+  def buscar(a_buscar, valor)
     @contribuyentes.each do |key, values|
-      el_buscado = values.find { |c| c.nombre == nombre }
+      el_buscado = values.find { |c| c.send(a_buscar) == valor }
       return el_buscado if el_buscado != nil
     end
     return nil
   end
+
 end
 
 

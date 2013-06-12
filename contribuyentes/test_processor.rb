@@ -8,15 +8,22 @@ class TestProcessor < MiniTest::Unit::TestCase
     assert_equal 3, caja.contador_de_contribuyentes
   end
 
-  def test_find_contribuyente
+  def test_find_contribuyente_por_nombre
     caja = Caja.new('./test_data.csv')
-    contribuyente = caja.buscar_por_nombre('juan')
+    contribuyente = caja.buscar('nombre', 'juan')
     assert_equal 'juan', contribuyente.nombre 
   end
 
   def test_find_contribuyente_inexistente
     caja = Caja.new('./test_data.csv')
-    contribuyente = caja.buscar_por_nombre('pedro')
+    contribuyente = caja.buscar('nombre', 'pedro')
     assert_equal nil, contribuyente 
   end
+  
+  def test_find_contribuyente_por_apellido
+    caja = Caja.new('./test_data.csv')
+    contribuyente = caja.buscar('apellido', 'lopez')
+    assert_equal 'lopez', contribuyente.apellido 
+  end
+
 end
