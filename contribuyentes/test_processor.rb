@@ -1,6 +1,17 @@
 require 'minitest/autorun'
 require './processor'
 
+class TestOtraCaja < MiniTest::Unit::TestCase
+  def test_buscar
+    caja = OtraCaja.new
+    persona = caja.buscar(:nombre, 'Juan') do |persona|
+      persona[:nombre] == 'Juan'
+    end
+    assert ! persona.nil?
+    assert_equal 'Juan', persona[:nombre]
+  end
+end
+
 class TestProcessor < MiniTest::Unit::TestCase
 
   def test_leer_archivo

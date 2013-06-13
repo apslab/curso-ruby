@@ -23,12 +23,21 @@ module Buscador
 
   attr_accessor :lista
 
-  def buscar(a_buscar, valor)
-    lista.each do |key, values|
-      el_buscado = values.find { |c| c.send(a_buscar) == valor }
-      return el_buscado if el_buscado != nil
-    end
-    return nil
+  def buscar(a_buscar, valor, &block)
+    block = Proc.new { |c| c.send(a_buscar) == valor } if block.nil?
+    lista.find(&block)
+  end
+end
+
+class OtraCaja
+  include Buscador
+
+  def initialize
+    self.lista = [
+      { :nombre => 'Juan', apellido: 'Perez' },
+      { nombre: 'Alberto', apellido: 'Rodriguez' },
+      { nombre: 'Damian', apellido: 'Lopez' }
+    ]
   end
 end
 
@@ -50,13 +59,16 @@ class Caja
         @contribuyentes[c.alicuota] = [c]
       end
     end
-    self.lista = @contribuyentes
+    self.lista = @contribuyentes.values.flatten
   end
 
   def contador_de_contribuyentes
     @count
   end
-
+  
+  def buscar(a_buscar, valor)
+    self.lista.find { |c| c.send(a_buscar) == valor }
+  end
 end
 
 
